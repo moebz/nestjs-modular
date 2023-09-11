@@ -11,11 +11,14 @@ import {
 
 import { BrandsService } from '../services/brands.service';
 import { CreateBrandDto, UpdateBrandDto } from '../dtos/brand.dtos';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('brands')
 @Controller('brands')
 export class BrandsController {
   constructor(private brandsService: BrandsService) {}
 
+  @ApiOperation({ summary: 'List brands' })
   @Get()
   findAll() {
     return this.brandsService.findAll();
